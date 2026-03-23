@@ -6,8 +6,8 @@ export default defineConfig({
   title: 'CCBus',
   description: 'CCBus Help Documentation',
 
-  // For GitHub Pages deployment at ccbus-lab.github.io
-  base: '/',
+  // For GitHub Pages deployment at ccbus-cc.github.io/tutorial
+  base: '/tutorial/',
 
   head: [
     // Preconnect to Google Fonts for performance
