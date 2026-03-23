@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="24" fill="#3366ff"/>
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
+        font-family="Inter, sans-serif" font-weight="700" font-size="36" fill="white">
+    CC
+  </text>
+  <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle"
+        font-family="Inter, sans-serif" font-weight="600" font-size="22" fill="rgba(255,255,255,0.85)">
+    Bus
+  </text>
+</svg>
