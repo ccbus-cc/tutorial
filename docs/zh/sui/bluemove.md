@@ -54,7 +54,7 @@ BlueMove是一款基于 Aptos 和 Sui 区块链构建的应用程序，为用户
 
 例如我选择用CCBus这个币添加流动性，大概就是下面这样
 
-<img src="/images/10-ccbus代币.png" alt="" />
+<img src="/images/10-ccbus-token.png" alt="" />
 
 ### 4、设定初始价格
 
