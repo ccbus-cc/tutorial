@@ -48,6 +48,7 @@ description: CCBus各个工具导航
 
 [创建预售教程](/zh/presale/mintaddsale)：最完全的预售创建教程，看了就能学会
 
+<!-- Commented out for now, may bring back later
 ### Solana一键发币
 
 [Solana发币官网](https://solana.ccbus.cc/)：全网最强的Solana一键发币平台，快速稳定有保障
@@ -107,6 +108,7 @@ description: CCBus各个工具导航
 [波场市值管理](https://tron.ccbus.cc/)：全网最强的波场市值管理工具，支持批量交易
 
 [波场批量转账](https://tron.ccbus.cc/multisend)：全网最强的波场批量转账工具，支持TRX、USDT批量空投
+-->
 
 ### 批量转账（空投）
 
