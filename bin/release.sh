@@ -8,10 +8,11 @@
 #
 # Workflow:
 #   1. Ensure working tree is clean
-#   2. Merge current branch (dev) into main
-#   3. Create an incremental tag on main
-#   4. Push main branch and tag to remote
-#   5. Switch back to the original branch (dev)
+#   2. Push dev branch to remote
+#   3. Merge dev into main
+#   4. Create an incremental tag on main
+#   5. Push main branch and tag to remote
+#   6. Switch back to dev, merge main into dev to keep in sync, push dev
 
 set -euo pipefail
 
@@ -80,6 +81,11 @@ if git rev-parse "$NEW_TAG" > /dev/null 2>&1; then
     error "Tag $NEW_TAG already exists"
 fi
 
+# --- Push dev to remote ---
+
+info "Pushing $CURRENT_BRANCH to $REMOTE..."
+git push "$REMOTE" "$CURRENT_BRANCH"
+
 # --- Merge into main ---
 
 info "Fetching latest from $REMOTE..."
@@ -107,10 +113,16 @@ git push "$REMOTE" main
 info "Pushing tag $NEW_TAG to $REMOTE..."
 git push "$REMOTE" "$NEW_TAG"
 
-# --- Switch back ---
+# --- Sync dev with main and switch back ---
 
 info "Switching back to $CURRENT_BRANCH..."
 git checkout "$CURRENT_BRANCH"
+
+info "Merging main back into $CURRENT_BRANCH to keep branches in sync..."
+git merge main --no-edit
+
+info "Pushing $CURRENT_BRANCH to $REMOTE..."
+git push "$REMOTE" "$CURRENT_BRANCH"
 
 echo ""
 info "Release complete!"
