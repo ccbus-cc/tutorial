@@ -109,6 +109,24 @@ When a match is found, a result card appears at the bottom of the page:
 
 > ⚠️ **Danger:** A lost private key **cannot** be recovered. CCBus does not store your private key. Once you navigate away from this page, the key is gone from the browser.
 
+### What About a Seed / Recovery Phrase?
+
+You will notice that the tool gives you **only an address and a private key** — there is **no 12- or 24-word seed phrase (recovery phrase / mnemonic)**. This is by design, not a bug.
+
+A seed phrase is the *root* of an HD (hierarchical deterministic) wallet: it encodes a piece of entropy, from which every private key in the wallet is deterministically derived along paths like `m/44'/60'/0'/0/0`. The CCBus tool, by contrast, generates a single raw 32-byte private key directly from `crypto.getRandomValues()` and uses it as-is — there is no seed, no derivation path, and no HD tree. The vanity address is mined by trying random private keys until one happens to produce a public-key hash that matches your pattern; a seed phrase is never produced because there is nothing to phrase.
+
+> **Important — read this before importing the key into MetaMask:**
+> - When you import this private key into MetaMask (Account menu → Import account → Private key), MetaMask will create an **"Imported" account** and will **not** show a seed phrase for it. There is no seed phrase to show — the account exists only as that single private key.
+> - If you reset MetaMask, restore from a different seed, or move to a new device, **this imported account will be gone** unless you re-import the private key.
+> - You **cannot** derive a seed phrase from this private key after the fact. The relationship is one-way: seed phrase → many keys, not key → seed phrase.
+>
+> In short: **the private key *is* the only backup.** Treat it accordingly. Do not expect MetaMask's standard "Secret Recovery Phrase" backup to cover this account.
+
+If you want a vanity address *and* a recoverable seed phrase, you have two practical options:
+
+1. **Treat the vanity address as a one-off hot wallet.** Mine it, import the key, use it to receive funds, and then sweep the balance into a normal seed-phrase wallet you control (e.g. a fresh MetaMask / hardware wallet). The vanity account is for receiving; the seed-phrase account is for long-term storage.
+2. **Use a different tool that mines from a known seed.** A few advanced tools let you supply your own entropy / seed and then grind derivation paths until one of the derived addresses matches your pattern. This is *exponentially* slower (typically minutes-to-hours for a 2-character prefix on a beefy machine) and is not what this CCBus tool does.
+
 ### Batch Generation and CSV Export
 
 With **Keep mining after a hit** turned on, every match is added to the results table. The heading shows the total count, e.g. **All matches (8)**. Click **CSV** to download all matches as a CSV file, or **Clear** to wipe the in-memory results.
@@ -178,3 +196,6 @@ Yes — EVM chains share the same address format, so the same private key contro
 
 **10. Can I generate multiple vanity addresses in one run?**
 Yes — enable **Keep mining after a hit** before starting. Every match will be added to the results table, and you can download the full batch as CSV.
+
+**11. Can I get a seed phrase (recovery phrase) for this account?**
+No. The tool produces a raw private key only — there is no seed phrase and no HD derivation. When you import this key into MetaMask, it will be an "Imported" account and MetaMask will not show a recovery phrase for it. The private key itself is your only backup. See the [What About a Seed / Recovery Phrase?](#what-about-a-seed--recovery-phrase) section above for details and recommended workarounds.
