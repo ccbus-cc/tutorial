@@ -178,6 +178,7 @@ function sidebarZh(): DefaultTheme.SidebarItem[] {
         { text: '批量归集工具', link: '/zh/tools/gather' },
         { text: '市值管理机器人', link: '/zh/tools/operate' },
         { text: '合约安全检测', link: '/zh/tools/contract-check' },
+        { text: '靓号地址生成器', link: '/zh/tools/vanity-address' },
       ],
     },
     {

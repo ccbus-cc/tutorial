@@ -159,6 +159,7 @@ function sidebarEn(): DefaultTheme.SidebarItem[] {
         { text: 'Batch Collection', link: '/en/tools/gather' },
         { text: 'Market Cap Bot', link: '/en/tools/operate' },
         { text: 'Contract Security Check', link: '/en/tools/contract-check' },
+        { text: 'Vanity Address Generator', link: '/en/tools/vanity-address' },
       ],
     },
     {
